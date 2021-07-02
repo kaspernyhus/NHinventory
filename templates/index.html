@@ -4,8 +4,21 @@
 
 {% block content %}
 
-
-
-Hva så
+<div>
+  <table class="center">
+    <tbody class="table-body">
+      {% for part in all_parts %}
+        <tr>
+          <td>
+            <span>{{ part.stock }}</span>
+          </td>
+          <td>
+            <span>{{part.name}} {{part.type}}</span>
+          </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
   
 {% endblock %}
