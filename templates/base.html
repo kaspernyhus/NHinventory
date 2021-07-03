@@ -23,12 +23,20 @@
   {% block content %}
   {% endblock %}
 
-  
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script type="text/javascript">
+    $(window).on('pagehide', function(){
+        localStorage.setItem('my-scroll-pos', $(window).scrollTop());
+    });
+
+    $(window).on('pageshow', function(){
+        var pos = localStorage.getItem('my-scroll-pos', 0);
+        if (pos)
+            $(window).scrollTop(pos);
+    });
+  </script>
   
 
-  <!-- <script src="{% static 'js/main.js' %} "></script> -->
-  <!-- <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script> -->
+  <script src="{% static 'js/main.js' %} "></script>
   
 </body>
 </html>
