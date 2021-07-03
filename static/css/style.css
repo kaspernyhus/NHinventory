@@ -9,6 +9,7 @@
   --darktext: #333;
   --lighttext:  white;
   --grayedtext: rgb(172, 172, 172);
+  --alert: rgb(255, 125, 125);
   --bottonhover: var(--more-dark);
   --borders: black;
   --lighterborders: #403434;
@@ -42,6 +43,7 @@ table {
   border-collapse: separate;
   border-spacing: 0 5px;
   width: 100%;
+  
 }
 
 .table-body {
@@ -83,4 +85,39 @@ tr:nth-child(even) {
 
 .sml-text {
   font-size: 11px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.sml-button {
+  background-color: var(--lighter);
+  border: 1px solid var(--borders);
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 4px; 
+  color: var(--darktext); 
+  text-align: center;
+  text-decoration: none;
+  line-height: 21px;
+  font-size: 70%;
+  height: 26px;
+  max-width: 360px;
+  transition: all 170ms ease-in-out;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 16px;
+}
+
+.red {
+  background-color: var(--alert);
+  color: rgb(0, 0, 0);
+}
+
+.plus {
+  font-size: 200%;
 }

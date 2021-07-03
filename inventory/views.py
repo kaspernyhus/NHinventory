@@ -8,23 +8,44 @@ def index(request):
   print(request.GET)
   if request.GET.get('type'):
     filter_by = request.GET.get('type')
-    print(filter_by)
     parts_query = Part.objects.filter(type_id=filter_by)
     form = PartTypeFilterBox(initial={'type': filter_by})
   
   elif request.GET.get('search_box'):
     search_query = request.GET.get('search_box')
     search_quaries = search_query.split()
-    print(search_quaries)
     parts_query = Part.objects.all()
     form = PartTypeFilterBox(initial={'type': search_query})
   
+  elif request.GET.get('stock'):
+    new_stock = request.GET.get('stock')
+    part_id = request.GET.get('part_id')
+    part = Part.objects.get(pk=part_id)
+    part.stock = new_stock
+    part.updated = timezone.now()
+    part.save()
+
+    parts_query = Part.objects.all()
+    form = PartTypeFilterBox()
+
   else:
     parts_query = Part.objects.all()
     form = PartTypeFilterBox()
 
-  context = {'parts': parts_query, 'form': form}
+  context = {'parts': parts_query, 'form': form, 'stock_update_form': None}
   return render(request, 'index.html', context)
+
+
+def create_part(request):
+  if request.method == 'POST':
+    form = PartCreateForm(request.POST)
+    if form.is_valid():
+      form.save()
+    return redirect('/')
+
+  form = PartCreateForm()
+  context = {'form': form}
+  return render(request, 'create_part.html', context)
 
 
 def edit_part(request, part_id):
@@ -52,5 +73,11 @@ def edit_part(request, part_id):
     'part_of_project':part.part_of_project
     })
 
-  context = {'form': form}
+  context = {'form': form, 'part': part}
   return render(request, 'edit_part.html', context)
+
+
+def delete_part(request, part_id):
+  part = Part.objects.get(pk=part_id)
+  part.delete()
+  return redirect('/')
