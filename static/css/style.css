@@ -1,0 +1,86 @@
+:root {
+  --background: hsl(0, 0%, 95%);
+  --little-darker: #e9edf0;
+  --darker: #9998d5;      /* navbar */
+  --more-dark: #8279a9;
+  --darkest: #605d70;
+  --lighter: rgb(251, 252, 255);
+  --light-transparent: rgba(255, 255, 255, 0.8);
+  --darktext: #333;
+  --lighttext:  white;
+  --grayedtext: rgb(172, 172, 172);
+  --bottonhover: var(--more-dark);
+  --borders: black;
+  --lighterborders: #403434;
+  --recipe-bg: #f7e1e1; 
+}
+
+body {
+    background: var(--background);
+    font-family: 'Open Sans',sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+   }
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+  max-width: 76px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  width: 100%;
+}
+
+.table-body {
+  width: 80%;
+  display: table;
+}
+
+td, th {
+  border: none;
+  padding: 1px;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+}
+
+th {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color:  var(--little-darker);
+}
+
+
+
+.filterbox {
+  display: flex;
+  height: 27px;
+}
+
+.search-box {
+  margin: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+
+.sml-text {
+  font-size: 11px;
+}

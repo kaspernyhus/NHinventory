@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="center">
+  <form class="flex" method="POST" name="edit_part" action="">
+    {% csrf_token %}
+    <ul>
+      {{ form.as_p }}
+    </ul>
+    <button type="submit">Save</button>
+  </form>
+
+</div>
+  
+{% endblock %}

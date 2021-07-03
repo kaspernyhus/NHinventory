@@ -43,6 +43,7 @@ class Part(models.Model):
   stock = models.IntegerField(default=0, blank=False)
   updated = models.DateTimeField(default=timezone.now)
   datasheet = models.URLField(max_length=200, blank=True, null=True)
+  url = models.URLField(max_length=200, blank=True, null=True)
   photo_thumbnail = models.ImageField(upload_to='photos/thumbnails/', blank=True, null=True)
   part_of_project = models.ForeignKey(Project, on_delete=models.DO_NOTHING, blank=True, null=True)
 

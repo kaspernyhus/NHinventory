@@ -4,21 +4,71 @@
 
 {% block content %}
 
-<div>
-  <table class="center">
-    <tbody class="table-body">
-      {% for part in all_parts %}
+<div class="center">
+    <H1>NH Inventory</H1>
+
+    <div class="flex">
+      <form class="flex" method="GET" name="filterbox" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+      </form>
+    
+      <form class="search-box" type="get" action=".">
+          <input  id="search_box" type="text" name="search_box"  placeholder="Søg..." >
+          <button id="search_submit" type="submit" >Søg</button>
+      </form>
+    </div>
+
+
+    <table class="center">
+      <colgroup>
+        <col style="width: 15%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 15%;">
+        <col style="width: 8%;">
+        <col style="width: 10%;">
+      </colgroup>
+      
+      <tbody class="table-body">
         <tr>
-          <td>
-            <span>{{ part.stock }}</span>
-          </td>
-          <td>
-            <span>{{part.name}} {{part.type}}</span>
-          </td>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Footprint</th>
+          <th>Stock</th>
+          <th>Updated</th>
         </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+        {% for part in parts %}
+          <tr>
+            <td>
+              <span class="sml-text">{{ part.type }}</span>
+            </td>
+            <td>
+              <span>
+                <a href="{% url 'edit_part' part.pk %}">
+                  {{ part.name }}
+                </a>
+              </span>
+            </td>
+            <td>
+              <span class="sml-text">{{part.description}}</span>
+            </td>
+            <td>
+              <span class="sml-text">{% if part.footprint %}{{part.footprint}}{% endif %}</span>
+            </td>
+            <td>
+              <span>{{part.stock}}</span>
+            </td>
+            <td>
+              <span class="sml-text">{{part.updated|date:'d/m/Y'}}</span>
+            </td>
+          </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
 </div>
   
 {% endblock %}
