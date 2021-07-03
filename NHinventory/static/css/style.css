@@ -47,7 +47,7 @@ table {
 }
 
 .table-body {
-  width: 60%;
+  width: 80%;
   display: table;
 }
 
@@ -120,4 +120,22 @@ a {
 
 .plus {
   font-size: 200%;
+}
+
+i.icon {
+  color: #b44c4c;
+  display: inline-block;
+  opacity: 1;
+  margin: 0 .25rem 0 0;
+  width: 0.8em;
+  height: 1em;
+  text-decoration: inherit;
+  text-align: center;
+  speak: none;
+  -webkit-backface-visibility: hidden;
+  b9ckface-visibility: hidden;
+}
+
+.datasheet {
+  
 }
