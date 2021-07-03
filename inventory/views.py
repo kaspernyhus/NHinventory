@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.db.models import Q
@@ -32,11 +32,11 @@ def edit_part(request, part_id):
     form = PartEditForm(request.POST)
     if form.is_valid():
       form_tosave = form.save(commit=False)
-      
+      form_tosave.id = part_id
       form_tosave.save()
+      return redirect('/')
   
   part = Part.objects.get(pk=part_id)
-
   form = PartEditForm(initial={
     'name':part.name,
     'unit':part.unit,
