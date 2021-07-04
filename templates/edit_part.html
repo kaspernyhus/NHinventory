@@ -6,15 +6,28 @@
 
 <div class="center">
   <h2>Edit part</h2>
-  <form class="flex" method="POST" name="edit_part" action="">
+  <form class="" method="POST" name="edit_part" action="">
     {% csrf_token %}
     <ul>
       {{ form.as_p }}
     </ul>
     <button type="submit">Save</button>
   </form>
-
-  <a href="{% url 'delete_part' part.id %}" class="sml-button red">delete</a>
+  
+  {% if BOM %}
+  <div class="project_BOM">
+    <h6>Used in</h6>
+    <ul>
+      {% for project in BOM %}
+        <li>{{ project.project }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  
+  <a href="{% url 'delete_part' part.id %}" class="sml-button red">delete part</a>
+  <br>
+  <a href="{% url 'index' %}" class="button">Back</a>
 </div>
   
 {% endblock %}

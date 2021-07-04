@@ -41,7 +41,7 @@ class PartEditForm(forms.ModelForm):
           'datasheet',
           'url',
           'photo_thumbnail',
-          'part_of_project'
+          
           )
 
 
@@ -60,7 +60,6 @@ class PartCreateForm(forms.ModelForm):
           'datasheet',
           'url',
           'photo_thumbnail',
-          'part_of_project'
           )
 
 

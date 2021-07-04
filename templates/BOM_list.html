@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="center">
+  <H1>BOM for {{ project }}</H1>
+
+
+  <table class="">
+    <colgroup>
+      <col style="width: 15%;">
+      <col style="width: 20%;">
+      <col style="width: 25%;">
+      <col style="width: 10%;">
+      <col style="width: 10%;">
+      <col style="width: 10%;">
+      <col style="width: 1%;">
+    </colgroup>
+    
+    <tbody class="table-body">
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Footprint</th>
+        <th>Quantity</th>
+        <th>Updated</th>
+        <th></th>
+      </tr>
+      {% for part in parts %}
+        <tr>
+          <td>
+            <span class="sml-text">{{ part.part.type }}</span>
+          </td>
+          <td>
+            <span>
+                {{ part.part.name }}
+            </span>
+          </td>
+          <td>
+            {% if part.part.description %}<span class="sml-text">{{part.part.description}}</span>{% endif %}
+          </td>
+          <td>
+            <span class="sml-text">{% if part.part.footprint %}{{part.part.footprint}}{% endif %}</span>
+          </td>
+          <td>
+            <a href="" data-bs-toggle="modal" data-bs-target="#ModalStockUpdate{{part.pk}}"><span>{{part.qty}}</span></a>
+            
+            <div class="modal" tabindex="-1" role="dialog" id="ModalStockUpdate{{part.pk}}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit quantity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="">
+                      <input type="number" name="qty" value="{{part.qty}}" required="" id="id_qty" class="stock-update-input">
+                      <input type="hidden" name="part_id" value="{{part.pk}}">
+                      <span class="">for this project</span>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </td>
+          <td>
+            <span class="sml-text">{{part.date|date:'d/m/Y'}}</span>
+          </td>
+          <td>
+            <a href="" class="sml-text">remove</a>
+          </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+
+  
+{% endblock %}

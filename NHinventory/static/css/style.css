@@ -39,14 +39,17 @@ body {
 }
 
 table {
+  display: block;
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0 5px;
+  width: 100%;
+  padding: 0% 8% 0% 8%;
 }
 
 .table-body {
-  
-  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
 td, th {
@@ -107,6 +110,25 @@ a {
   box-sizing: border-box;
   position: relative;
   margin-top: 16px;
+}
+
+.button {
+  box-shadow: 0px 6px 0px rgba(0, 0, 0, 0.01), 0px 6px 5px rgba(0, 0, 0, 0.02), 0px 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px; 
+  background-color: var(--lighter);
+  border: 1px solid var(--borders);
+  color: var(--darktext);
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100%;
+  width: 100%;
+  max-width: 180px;
+  transition: all 170ms ease-in-out;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .red {
@@ -230,4 +252,10 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.project_BOM {
+  padding: 10px;
+  border: solid;
+  border-color: var(--darkest);
 }

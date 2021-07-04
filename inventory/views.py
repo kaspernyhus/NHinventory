@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from BOMmanager.models import ProjectBOM
 from .forms import *
 from django.db.models import Q
 
@@ -69,11 +70,11 @@ def edit_part(request, part_id):
     'stock':part.stock,
     'datasheet':part.datasheet,
     'url':part.url,
-    'photo_thumbnail':part.photo_thumbnail,
-    'part_of_project':part.part_of_project
+    'photo_thumbnail':part.photo_thumbnail
     })
+  BOM = ProjectBOM.objects.filter(part=part)
 
-  context = {'form': form, 'part': part}
+  context = {'form': form, 'part': part, 'BOM':BOM}
   return render(request, 'edit_part.html', context)
 
 

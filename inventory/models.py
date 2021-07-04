@@ -23,14 +23,6 @@ class Unit(models.Model):
     return self.unit
 
 
-class Project(models.Model):
-  name = models.CharField(max_length=100, blank=False)
-  updated = models.DateTimeField(default=timezone.now)
-
-  def __str__(self):
-    return self.name
-
-
 class Part(models.Model):
   name = models.CharField(max_length=100, blank=False)
   value = models.FloatField(blank=True, null=True)
@@ -45,7 +37,7 @@ class Part(models.Model):
   datasheet = models.URLField(max_length=200, blank=True, null=True)
   url = models.URLField(max_length=200, blank=True, null=True)
   photo_thumbnail = models.ImageField(upload_to='photos/thumbnails/', blank=True, null=True)
-  part_of_project = models.ForeignKey(Project, on_delete=models.DO_NOTHING, blank=True, null=True)
+  
 
   def __str__(self):
     return self.name
