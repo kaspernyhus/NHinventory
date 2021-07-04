@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'BOMmanager.apps.BommanagerConfig',
     'inventory.apps.InventoryConfig',
     'bootstrap_modal_forms',
     'django.contrib.admin',

@@ -80,8 +80,9 @@
                     </div>
                     <div class="modal-body">
                       <form action="">
-                        <input type="number" name="stock" value="{{part.stock}}" required="" id="id_stock">
+                        <input type="number" name="stock" value="{{part.stock}}" required="" id="id_stock" class="stock-update-input">
                         <input type="hidden" name="part_id" value="{{part.pk}}">
+                        <span class="">in stock</span>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
