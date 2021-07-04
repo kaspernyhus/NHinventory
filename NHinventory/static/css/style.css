@@ -40,14 +40,12 @@ body {
 
 table {
   table-layout: fixed;
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0 5px;
-  width: 100%;
-  
 }
 
 .table-body {
-  width: 80%;
+  
   display: table;
 }
 
@@ -164,7 +162,7 @@ i.icon {
   padding: 14px 16px;
   display: block;
   color: var(--darktext);
-  text-align: center;
+  text-align: left;
 }
 
 #nav a:hover {
