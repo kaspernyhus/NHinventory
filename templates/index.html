@@ -90,7 +90,7 @@
                         <span class="">in stock</span>
                         
                     </div>
-                    <span class="location">Location: {{ part.location }} @ {{ part.location.placement }}</span>
+                    <span class="location">Location: {% if part.location %} {{ part.location }} @ {{ part.location.placement }} {% else %} unknown {% endif %}</span>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary">Save changes</button>
