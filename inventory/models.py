@@ -23,9 +23,16 @@ class Unit(models.Model):
     return self.unit
 
 
+class Placement(models.Model):
+  placement = models.CharField(max_length=100, blank=False)
+
+  def __str__(self):
+    return self.placement
+
+
 class Location(models.Model):
   container = models.CharField(max_length=100, blank=False)
-  placement = models.CharField(max_length=100, blank=True)
+  placement = models.ForeignKey(Placement, on_delete=models.DO_NOTHING, blank=True, null=True)
 
   def __str__(self):
     return self.container

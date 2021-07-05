@@ -6,9 +6,9 @@ class PartAdmin(admin.ModelAdmin):
   list_display = ('name', 'description', 'value', 'unit', 'type', 'subtype', 'stock')
 
 
-
 admin.site.register(Part, PartAdmin)
 admin.site.register(PartType)
 admin.site.register(Subtype)
 admin.site.register(Unit)
 admin.site.register(Location)
+admin.site.register(Placement)
