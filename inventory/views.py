@@ -6,7 +6,6 @@ from django.db.models import Q
 
 
 def index(request):
-  print(request.GET)
   if request.GET.get('type'):
     filter_by = request.GET.get('type')
     parts_query = Part.objects.filter(type_id=filter_by)
@@ -39,7 +38,7 @@ def index(request):
 
 def create_part(request):
   if request.method == 'POST':
-    form = PartCreateForm(request.POST)
+    form = PartCreateForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
     return redirect('/')
@@ -51,7 +50,9 @@ def create_part(request):
 
 def edit_part(request, part_id):
   if request.method == 'POST':
-    form = PartEditForm(request.POST)
+    print('---------')
+    print(request.FILES)
+    form = PartEditForm(request.POST, request.FILES)
     if form.is_valid():
       form_tosave = form.save(commit=False)
       form_tosave.id = part_id

@@ -6,7 +6,7 @@
 
 <div class="center">
   <h2>Create new part</h2>
-  <form class="" method="POST" name="edit_part" action="">
+  <form class="" method="POST" enctype="multipart/form-data" name="edit_part" action="">
     {% csrf_token %}
     <ul>
       {{ form.as_p }}

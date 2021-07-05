@@ -25,6 +25,7 @@
     <table class="">
       <colgroup>
         <col style="width: 14%;">
+        <col style="width: 4%;">
         <col style="width: 22%;">
         <col style="width: 24%;">
         <col style="width: 4%;">
@@ -37,6 +38,7 @@
       <tbody class="table-body">
         <tr>
           <th>Type</th>
+          <th></th>
           <th>Name</th>
           <th>Description</th>
           <th>Details</th>
@@ -49,6 +51,9 @@
           <tr>
             <td>
               <span class="sml-text">{{ part.type }}</span>
+            </td>
+            <td>
+              {% if part.photo_thumbnail %}<img src="{{ part.photo_thumbnail.url }}" class="table-image"> {% endif %}
             </td>
             <td>
               <span>

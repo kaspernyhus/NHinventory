@@ -264,3 +264,9 @@ li.dropdown {
 .location {
   padding: 1rem;
 }
+
+.table-image {
+  max-width: 26px;
+  max-height: 20px;
+  padding-bottom: 4px;
+}

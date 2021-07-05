@@ -13,8 +13,6 @@ def index(request):
 def show_BOM(request, project_id):
   project = Project.objects.get(pk=project_id)
   parts = ProjectBOM.objects.filter(project=project).order_by('part__type')
-  print('----------')
-  print(parts)
   
   context = {'project': project, 'parts':parts}
   return render(request, 'BOM_list.html', context)
