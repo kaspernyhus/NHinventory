@@ -53,7 +53,7 @@
               <span class="sml-text">{{ part.type }}</span>
             </td>
             <td>
-              {% if part.photo_thumbnail %}<img src="{{ part.photo_thumbnail.url }}" class="table-image"> {% endif %}
+              {% if part.photo_thumbnail %}<a href="{{ part.photo_thumbnail.url }}"><img src="{{ part.photo_thumbnail.url }}" class="table-image"></a>{% endif %}
             </td>
             <td>
               <span>
