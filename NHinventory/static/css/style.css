@@ -259,3 +259,9 @@ li.dropdown {
   border: solid;
   border-color: var(--darkest);
 }
+
+
+.location {
+  padding: 1rem;
+  
+}

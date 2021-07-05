@@ -70,7 +70,8 @@ def edit_part(request, part_id):
     'stock':part.stock,
     'datasheet':part.datasheet,
     'url':part.url,
-    'photo_thumbnail':part.photo_thumbnail
+    'photo_thumbnail':part.photo_thumbnail,
+    'location':part.location
     })
   BOM = ProjectBOM.objects.filter(part=part)
 

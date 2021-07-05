@@ -41,7 +41,7 @@ class PartEditForm(forms.ModelForm):
           'datasheet',
           'url',
           'photo_thumbnail',
-          
+          'location'
           )
 
 
@@ -60,10 +60,17 @@ class PartCreateForm(forms.ModelForm):
           'datasheet',
           'url',
           'photo_thumbnail',
+          'location'
           )
 
 
 class StockUpdateForm(forms.ModelForm):
     class Meta:
         model = Part
-        fields = ['stock']
+        fields = ['stock','location']
+
+
+class LocationUpdateForm(forms.ModelForm):
+  class Meta:
+        model = Location
+        fields = ['container','placement']
