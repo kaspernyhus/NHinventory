@@ -29,7 +29,7 @@ def index(request):
     form = PartTypeFilterBox()
 
   else:
-    parts_query = Part.objects.all().order_by('type')
+    parts_query = Part.objects.order_by('type','name')
     form = PartTypeFilterBox()
 
   context = {'parts': parts_query, 'form': form, 'stock_update_form': None}
