@@ -75,7 +75,6 @@
                       {% if part.package %} <span class="flex sml-text part-dscr"> {{ part.package }} </span>{% endif %}
                       {% if part.value %} <span class="flex part-dscr"> {{ part.value }}{{ part.unit }} </span>{% endif %}
                       {% if part.photo_thumbnail %} <span class="flex part-dscr"><img src="{{ part.photo_thumbnail.url }}" class="part-image"></span>{% endif %}
-                      <span class="flex part-dscr">Location: {% if part.location %} {{ part.location }} @ {{ part.location.placement }} {% else %} unknown {% endif %}</span>
                       {% if part.url %} <span class="flex part-dscr"><a href="{{ part.url }}" target="_blank">website</a></span>{% endif %}
                       {% if part.datasheet %}
                         <span class="flex part-dscr">
@@ -85,6 +84,7 @@
                         </span>
                       {% endif %}    
                       <span class="flex part-dscr"><b>Stock: {{ part.stock }}</b></span> 
+                      <span class="flex part-dscr">Location: {% if part.location %} {{ part.location }} @ {{ part.location.placement }} {% else %} unknown {% endif %}</span>
                       <span class="flex sml-text part-dscr pad15">Updated: {{ part.updated }} </span>
                     </div>
                     <div class="modal-footer">
