@@ -35,20 +35,7 @@ class PartEditForm(forms.ModelForm):
 class PartCreateForm(forms.ModelForm):
     class Meta:
         model = Part
-        fields = (
-          'name',
-          'unit',
-          'type',
-          'subtype',
-          'description',
-          'footprint',
-          'package',
-          'stock',
-          'datasheet',
-          'url',
-          'photo_thumbnail',
-          'location'
-          )
+        fields = '__all__'
 
 
 class StockUpdateForm(forms.ModelForm):
