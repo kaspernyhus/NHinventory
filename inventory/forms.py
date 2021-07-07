@@ -29,20 +29,7 @@ class PartTypeFilterBox(forms.ModelForm):
 class PartEditForm(forms.ModelForm):
     class Meta:
         model = Part
-        fields = (
-          'name',
-          'unit',
-          'type',
-          'subtype',
-          'description',
-          'footprint',
-          'package',
-          'stock',
-          'datasheet',
-          'url',
-          'photo_thumbnail',
-          'location'
-          )
+        fields = '__all__'
 
 
 class PartCreateForm(forms.ModelForm):
