@@ -62,6 +62,7 @@ def edit_part(request, part_id):
   part = Part.objects.get(pk=part_id)
   form = PartEditForm(initial={
     'name':part.name,
+    'value':part.value,
     'unit':part.unit,
     'type':part.type,
     'subtype':part.subtype,
