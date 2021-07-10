@@ -8,7 +8,7 @@ from django.db.models import Q
 def index(request):
   if request.GET.get('type'):
     filter_by = request.GET.get('type')
-    parts_query = Part.objects.filter(type_id=filter_by).order_by('unit','value','name')
+    parts_query = Part.objects.filter(type_id=filter_by).order_by('subtype','unit','value','name')
     form = PartTypeFilterBox(initial={'type': filter_by})
   
   elif request.GET.get('search_box'):
@@ -29,7 +29,7 @@ def index(request):
     form = PartTypeFilterBox()
 
   else:
-    parts_query = Part.objects.order_by('type','unit','value','name')
+    parts_query = Part.objects.order_by('type','subtype','unit','value','name')
     form = PartTypeFilterBox()
 
   context = {'parts': parts_query, 'form': form, 'stock_update_form': None}
