@@ -1,4 +1,4 @@
-# NH inventory
+# [NH inventory](http://nhinventory.pythonanywhere.com/)
 This is a database application to keep track of components in my inventory and projects that I'm working on
 
 ## Django web page
