@@ -15,6 +15,7 @@ class Project(models.Model):
 class ProjectBOM(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE)
   part = models.ForeignKey(Part, on_delete=models.DO_NOTHING)
+  pcb_ref = models.CharField(max_length=200, blank=True)
   qty = models.IntegerField(default=1, blank=False)
   date = models.DateTimeField(default=timezone.now)
 

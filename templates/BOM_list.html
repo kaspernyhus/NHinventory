@@ -7,13 +7,20 @@
 
 <div class="center">
   <H1>BOM for {{ project }}</H1>
-
+  
+  <div>
+    <a href="{% url 'BOM_add_part' project.id %}" class="sml-button"><span>Add component</span></a>
+    <a href="" class="sml-button">Export list of missing components</a>
+  </div>
+  
+  <br>
 
   <table class="">
     <colgroup>
       <col style="width: 15%;">
+      <col style="width: 10%;">
+      <col style="width: 10%;">
       <col style="width: 20%;">
-      <col style="width: 25%;">
       <col style="width: 10%;">
       <col style="width: 10%;">
       <col style="width: 10%;">
@@ -22,23 +29,64 @@
     
     <tbody class="table-body">
       <tr>
+        <th>Ref</th>
         <th>Type</th>
         <th>Name</th>
         <th>Description</th>
         <th>Footprint</th>
         <th>Quantity</th>
+        <th>Stock</th>
         <th>Updated</th>
         <th></th>
       </tr>
       {% for part in parts %}
         <tr>
           <td>
+            <span class="sml-text">{{ part.pcb_ref }}</span>
+          </td>
+          <td>
             <span class="sml-text">{{ part.part.type }}</span>
           </td>
           <td>
             <span>
-                {{ part.part.name }}
+              <a href="" data-bs-toggle="modal" data-bs-target="#ModalPart{{part.pk}}"><span>{{ part.part.name }}</span></a>
             </span>
+            
+            <div class="modal" tabindex="-1" role="dialog" id="ModalPart{{part.pk}}">
+              <div class="modal-dialog part-modal">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">{{ part.part.name }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <span class="flex sml-text part-dscr">{{ part.type }} {% if part.subtype %} {{ part.subtype }} {% endif %}</span>
+                    <span class="flex part-dscr">{{ part.name }}</span>
+                    {% if part.part.description %} <span class="flex sml-text part-dscr"> {{ part.part.description }} </span>{% endif %}
+                    {% if part.part.footprint %} <span class="flex sml-text part-dscr"> {{ part.part.footprint }} </span>{% endif %}
+                    {% if part.part.package %} <span class="flex sml-text part-dscr"> {{ part.part.package }} </span>{% endif %}
+                    {% if part.part.value %} <span class="flex part-dscr"> {{ part.part.value }}{{ part.part.unit }} </span>{% endif %}
+                    {% if part.part.photo_thumbnail %} <span class="flex part-dscr"><img src="{{ part.photo_thumbnail.url }}" class="part-image"></span>{% endif %}
+                    {% if part.part.url %} <span class="flex part-dscr"><a href="{{ part.url }}" target="_blank">website</a></span>{% endif %}
+                    {% if part.part.datasheet %}
+                      <span class="flex part-dscr">
+                        <a href="{{ part.datasheet }}" target="_blank"> 
+                          <i class="part-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm250.2-143.7c-12.2-12-47-8.7-64.4-6.5-17.2-10.5-28.7-25-36.8-46.3 3.9-16.1 10.1-40.6 5.4-56-4.2-26.2-37.8-23.6-42.6-5.9-4.4 16.1-.4 38.5 7 67.1-10 23.9-24.9 56-35.4 74.4-20 10.3-47 26.2-51 46.2-3.3 15.8 26 55.2 76.1-31.2 22.4-7.4 46.8-16.5 68.4-20.1 18.9 10.2 41 17 55.8 17 25.5 0 28-28.2 17.5-38.7zm-198.1 77.8c5.1-13.7 24.5-29.5 30.4-35-19 30.3-30.4 35.7-30.4 35zm81.6-190.6c7.4 0 6.7 32.1 1.8 40.8-4.4-13.9-4.3-40.8-1.8-40.8zm-24.4 136.6c9.7-16.9 18-37 24.7-54.7 8.3 15.1 18.9 27.2 30.1 35.5-20.8 4.3-38.9 13.1-54.8 19.2zm131.6-5s-5 6-37.3-7.8c35.1-2.6 40.9 5.4 37.3 7.8z"></path></svg></i>
+                        </a>
+                      </span>
+                    {% endif %}    
+                    <span class="flex part-dscr"><b>Stock: {{ part.part.stock }}</b></span> 
+                    <span class="flex part-dscr sml-text">Location: {% if part.part.location %} {{ part.part.location }} @ {{ part.part.location.placement }} {% else %} unknown {% endif %}</span>
+                    <span class="flex sml-text part-dscr pad15">Updated: {{ part.part.updated }} </span>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{% url 'edit_part' part.part.pk %}" class="button">Edit</a>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </td>
           <td>
             {% if part.part.description %}<span class="sml-text">{{part.part.description}}</span>{% endif %}
@@ -73,10 +121,17 @@
 
           </td>
           <td>
+            {% if part.qty > part.part.stock %}
+              <span class="" style="color: red;">{{part.part.stock}}</span>
+            {% else %}
+              <span class="" style="color: green;">{{part.part.stock}}</span>
+            {% endif %}
+          </td>
+          <td>
             <span class="sml-text">{{part.date|date:'d/m/Y'}}</span>
           </td>
           <td>
-            <a href="" class="sml-text">remove</a>
+            <a href="{% url 'BOM_delete_part' project.id part.id %}" class="sml-text">remove</a>
           </td>
         </tr>
     {% endfor %}

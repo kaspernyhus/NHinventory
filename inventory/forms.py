@@ -6,7 +6,6 @@ from django.db.models.query import QuerySet
 from django.forms import widgets
 from django.db.models import Q
 from .models import *
-from bootstrap_modal_forms.forms import BSModalModelForm
 
 
 class PartTypeFilterBox(forms.ModelForm):
