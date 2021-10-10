@@ -89,3 +89,13 @@ def BOM_delete_part(request, project_id, part_id):
   part = ProjectBOM.objects.get(pk=part_id)
   part.delete()
   return redirect('/projects/BOM' + str(project_id))
+
+
+def export_missing(request, project_id):
+  project = Project.objects.get(pk=project_id)
+  parts = Part.objects.all()
+  BOM_parts = ProjectBOM.objects.filter(project=project_id)
+
+
+  context = {'project': project, 'parts': parts, 'BOM_parts': BOM_parts}
+  return render(request, 'BOM_missing_list.html', context)

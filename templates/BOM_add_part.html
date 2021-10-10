@@ -7,6 +7,9 @@
 
 
 <div class="center">
+  <H1>Edit BOM for <a href="{% url 'show_BOM' project.id %}">{{ project }}</a></H1>
+  <br>
+
   <h6>Add component</h6>
   <form method="POST" class="add-form">
     {% csrf_token %}
@@ -26,7 +29,6 @@
 
 <br>
 <div class="center">
-  <H4>BOM for {{ project }}</H4>
   <table class="">
     <colgroup>
       <col style="width: 15%;">
