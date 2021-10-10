@@ -1,8 +1,8 @@
 :root {
   --background: hsl(0, 0%, 95%);
   --little-darker: #e9edf0;
-  --darker: #9998d5;      /* navbar */
-  --more-dark: #8279a9;
+  --darker: #54a3fd;      /* navbar */
+  --more-dark: #3a5eff;
   --darkest: #605d70;
   --lighter: rgb(251, 252, 255);
   --light-transparent: rgba(255, 255, 255, 0.8);
