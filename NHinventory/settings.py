@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'autoAdd.apps.AutoaddConfig',
     'BOMmanager.apps.BommanagerConfig',
     'inventory.apps.InventoryConfig',
     'django.contrib.admin',
