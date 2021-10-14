@@ -12,6 +12,12 @@ def index(request):
 
 
 def show_BOM(request, project_id):
+  if request.GET.get('stock'):
+    new_stock = request.GET.get('stock')
+    part_id = request.GET.get('part_id')
+    part = Part.objects.get(pk=part_id)
+    part.stock = new_stock
+    part.save()
   if request.GET.get('qty'):
     new_qty = request.GET.get('qty')
     BOM_part_id = request.GET.get('part_id')
