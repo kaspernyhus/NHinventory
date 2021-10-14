@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from inventory.models import *
 import csv
 
-def index(request):
+def autoadd_index(request):
   return render(request, 'autoAddIndex.html')
 
 
