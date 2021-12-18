@@ -25,7 +25,9 @@ def index(request):
     part.updated = timezone.now()
     part.save()
 
-    parts_query = Part.objects.all()
+    #parts_query = Part.objects.all()
+    #parts_query = None
+    parts_query = Part.objects.filter(type_id=part.type).order_by('subtype','unit','value','name')
     form = PartTypeFilterBox()
 
   else:
